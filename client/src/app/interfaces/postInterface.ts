@@ -1,5 +1,13 @@
+import { IAuthor } from "./autherInterface";
+import { IComment } from "./commentInterface";
+
 export interface IPost {
+	_id: string;
 	title: string;
 	content: string;
-	imgUrl?: string | null;
+	imageUrl?: string | null;
+	author?: IAuthor | null;
+	createdAt?: Date;
+	likes?: number;
+	comments?: IComment[] | null;
 }

@@ -1,1 +1,4 @@
-<p>my-posts works!</p>
+<div class=" d-flex justify-content-center align-items-center"
+  *ngFor ="let post of posts">
+  <app-post-card [post]="post" [myPost]="true"></app-post-card>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PostServices } from '../../services/post/post-services';
+import { IPost } from '../../interfaces/postInterface';
 
 @Component({
   selector: 'app-my-posts',
@@ -7,5 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './my-posts.css'
 })
 export class MyPosts {
+  constructor(private postServices: PostServices) {}
 
+  posts: IPost[] = [];
+
+  ngOnInit() {
+    this.postServices.getPosts().subscribe({
+      next: (posts) => {
+        this.posts = posts;
+      },
+      error: (err) => {
+        console.error('Error fetching posts:', err);
+      }
+    });
+  }
 }

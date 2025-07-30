@@ -46,11 +46,8 @@
     </mat-form-field>
 
 		<mat-form-field appearance="outline" class="w-100 mb-4">
-      <mat-label>Image URL</mat-label>
-      <input matInput formControlName="imgUrl" type="password" required />
-      <mat-error *ngIf="signUpForm.get('imgUrl')?.hasError('required')">
-        Image URL is required
-      </mat-error>
+      <mat-label>Image URL ( optional )</mat-label>
+      <input matInput formControlName="imgUrl" type="url" />
     </mat-form-field>
 
     <button mat-raised-button color="primary" class="w-100">Sign Up</button>
