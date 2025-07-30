@@ -1,9 +1,13 @@
 const Post = require("../models/Post.js");
 
-const getAllPosts =  async () => {
+const getAllPosts =  async (userId) => {
     try {
         const posts =  await Post.find({}).populate('author', 'username imgUrl').sort({ createdAt: -1 });
-        return posts;
+        const postsWithLikesStatus = posts.map(post => {
+            const isLiked = post.likedBy.includes(userId);
+            return { ...post._doc, isLiked };
+        })
+        return postsWithLikesStatus;
     } catch (error) {
         throw new Error(error.message);
     }
@@ -12,7 +16,11 @@ const getAllPosts =  async () => {
 const getPostsByUser = async (userId) => {
     try {
         const posts = await Post.find({ author : userId });
-        return posts;
+        const postsWithLikesStatus = posts.map(post => {
+            const isLiked = post.likedBy.includes(userId);
+            return { ...post._doc, isLiked };
+        })
+        return postsWithLikesStatus;
     } catch (error) {
         throw new Error(error.message);
     }

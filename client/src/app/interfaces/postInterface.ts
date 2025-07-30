@@ -10,4 +10,5 @@ export interface IPost {
 	createdAt?: Date;
 	likes?: number;
 	comments?: IComment[] | null;
+	isLiked?: boolean
 }

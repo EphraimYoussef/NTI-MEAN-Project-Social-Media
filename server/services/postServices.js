@@ -10,9 +10,9 @@ const createPost = async (postData) => {
 	}
 }
 
-const getAllPosts = async () => {
+const getAllPosts = async (userId) => {
 	try {
-		const posts = await postRepo.getAllPosts();
+		const posts = await postRepo.getAllPosts(userId);
 		return posts;
 	} 
 	catch (error) {

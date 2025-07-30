@@ -48,7 +48,7 @@ export class PostServices {
     );
   }
 
-  getPostsByUser(userId: string): Observable<IPost[]> {
+  getPostsByUser(): Observable<IPost[]> {
     if (!this.cookieService.check('authToken')) {
       return new Observable<IPost[]>(observer => {
         observer.error('No auth token found');
@@ -56,7 +56,7 @@ export class PostServices {
       });
     }
     
-    return this.http.get<{ status: string; data: IPost[] }>(`${this.apiUrl}/user/${userId}`, {
+    return this.http.get<{ status: string; data: IPost[] }>(`${this.apiUrl}/userPosts`, {
       headers: {
         Authorization: `Bearer ${this.cookieService.get('authToken')}`
       }
@@ -75,6 +75,38 @@ export class PostServices {
     }
     
     return this.http.delete<IPost>(`${this.apiUrl}/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
+
+  likePost(postId: string): Observable<IPost> {
+    const token = this.cookieService.get('authToken');
+    if (!token) {
+      return new Observable<IPost>(observer => {
+        observer.error('No auth token found');
+        observer.complete();
+      });
+    }
+    
+    return this.http.post<IPost>(`${this.apiUrl}/${postId}/like`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+  }
+
+  unlikePost(postId: string): Observable<IPost> {
+    const token = this.cookieService.get('authToken');
+    if (!token) {
+      return new Observable<IPost>(observer => {
+        observer.error('No auth token found');
+        observer.complete();
+      });
+    }
+    
+    return this.http.post<IPost>(`${this.apiUrl}/${postId}/unlike`, {}, {
       headers: {
         Authorization: `Bearer ${token}`
       }

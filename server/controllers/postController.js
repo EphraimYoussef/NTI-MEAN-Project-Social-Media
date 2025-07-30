@@ -18,7 +18,7 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     try {
-        const posts = await postService.getAllPosts();
+        const posts = await postService.getAllPosts(req.user.id);
         res.status(200).json(jsend.success(posts));
     } catch (error) {
         res.status(500).json(jsend.error({ message: error.message }));
