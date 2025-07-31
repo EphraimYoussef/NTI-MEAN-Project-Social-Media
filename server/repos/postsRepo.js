@@ -13,6 +13,21 @@ const getAllPosts =  async (userId) => {
     }
 }
 
+const getPostById = async ( userId, postId) => {
+    try {
+        const post = await Post.findById(postId).populate('author', 'username imgUrl');
+        if (!post) {
+            throw new Error('Post not found');
+        }
+        if (post.likedBy.includes(userId)) {
+            post.isLiked = true;
+        }
+        return post;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 const getPostsByUser = async (userId) => {
     try {
         const posts = await Post.find({ author : userId });
@@ -89,6 +104,7 @@ const unlikePost = async (postId , userId) => {
 
 module.exports = {
     getAllPosts,
+    getPostById,
     getPostsByUser,
     createPost,
     deletePost,

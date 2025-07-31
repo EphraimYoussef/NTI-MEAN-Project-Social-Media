@@ -20,6 +20,16 @@ const getAllPosts = async (userId) => {
 	}
 }
 
+const getPostById = async (userId, postId) => {
+	try {
+		const post = await postRepo.getPostById(userId , postId);
+		return post;
+	} 
+	catch (error) {
+		throw new Error(error.message);
+	}
+}
+
 const getPostsByUser = async (userId) => {
 	try {
 		const posts = await postRepo.getPostsByUser(userId);
@@ -62,6 +72,7 @@ const unlikePost = async (postId , userId) => {
 
 module.exports = {
 	createPost,
+	getPostById,
 	getAllPosts,
 	getPostsByUser,
 	deletePost,

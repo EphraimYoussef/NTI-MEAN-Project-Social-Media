@@ -48,6 +48,24 @@ export class PostServices {
     );
   }
 
+  getPostById(postId: string): Observable<IPost> {
+    if (!this.cookieService.check('authToken')) {
+      return new Observable<IPost>(observer => {
+        observer.error('No auth token found');
+        observer.complete();
+      });
+    }
+    
+    return this.http.get<{ status: string; data: IPost }>(`${this.apiUrl}/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${this.cookieService.get('authToken')}`
+      }
+    }).pipe(
+      map(response => response.data)
+    );
+  }
+
+
   getPostsByUser(): Observable<IPost[]> {
     if (!this.cookieService.check('authToken')) {
       return new Observable<IPost[]>(observer => {

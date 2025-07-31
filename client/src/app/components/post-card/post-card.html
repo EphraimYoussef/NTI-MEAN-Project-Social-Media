@@ -47,9 +47,9 @@
 		<!-- ! Post Actions -->
 	<mat-card-actions class="d-flex justify-content-between align-items-center px-2">
 		<div class="d-flex align-items-center gap-1">
-			<button mat-icon-button>
+			<button mat-icon-button (click)="likeButton()">
 				<mat-icon color="warn">
-					{{ post.isLiked ? 'favorite' : 'favorite_border' }}
+					{{ checked ? 'favorite' : 'favorite_border' }}
 				</mat-icon>
 			</button>
 			<span class="fw-semibold mt-1"> {{ post.likes }} Likes</span>

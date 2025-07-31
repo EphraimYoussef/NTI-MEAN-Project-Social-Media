@@ -16,6 +16,15 @@ const createPost = async (req, res) => {
     }
 }
 
+const getPostById = async (req, res) => {
+    try {
+        const post = await postService.getPostById(req.user.id, req.params.postId);
+        res.status(200).json(jsend.success(post));
+    } catch (error) {
+        res.status(500).json(jsend.error({ message: error.message }));
+    }
+}
+
 const getAllPosts = async (req, res) => {
     try {
         const posts = await postService.getAllPosts(req.user.id);
@@ -63,6 +72,7 @@ const unlikePost = async (req, res) => {
 
 module.exports = {
     createPost,
+    getPostById,
     getAllPosts,
     getPostsByUser,
     deletePost,

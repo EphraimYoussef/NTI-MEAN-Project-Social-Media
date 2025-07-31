@@ -1,5 +1,6 @@
 import { IAuthor } from "./autherInterface";
 import { IComment } from "./commentInterface";
+import { IUser } from "./userInterface";
 
 export interface IPost {
 	_id: string;
@@ -11,4 +12,5 @@ export interface IPost {
 	likes?: number;
 	comments?: IComment[] | null;
 	isLiked?: boolean
+	likedBy?: IUser
 }
