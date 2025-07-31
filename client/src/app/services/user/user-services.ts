@@ -51,4 +51,8 @@ export class UserService {
     );
   }
 
+
+  isLoggedIn(): boolean {
+    return this.cookieService.check('authToken');
+  }
 }
