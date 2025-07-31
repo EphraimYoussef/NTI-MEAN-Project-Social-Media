@@ -1,1 +1,1 @@
-# NTI-MEAN-Project
+# NTI-MEAN-Project ( Simple Social Media App )
