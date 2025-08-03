@@ -63,6 +63,7 @@ export class PostCard implements OnInit {
       next: (comments) => {
         this.comments = comments;
         this.post.comments = comments;
+        this.cdRef.markForCheck();
       },
       error: (err) => {
         this.toastr.error('Failed to load comments');

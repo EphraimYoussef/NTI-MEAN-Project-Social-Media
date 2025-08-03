@@ -5,27 +5,29 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { Login } from './components/login/login';
 import { SignUp } from './components/sign-up/sign-up';
 import { AddNewPost } from './components/add-new-post/add-new-post';
-import { PostCard } from './components/post-card/post-card';
 import { AllPosts } from './components/all-posts/all-posts';
 import { MyPosts } from './components/my-posts/my-posts';
-import { AuthGuard } from './guards/auth-guard';
+import { AuthGuard } from './guards/auth/auth-guard';
+import { NoAuthGuard } from './guards/no-auth/no-auth-guard';
 
 const routes: Routes = [
   {
     path:"",
     component: MainLayout,
+    canActivate: [AuthGuard],
     children: [
-      { path: "newpost" , component: AddNewPost , canActivate: [AuthGuard]},
-      { path: "" , component: AllPosts , canActivate: [AuthGuard]},
-      { path: "allposts" , component: AllPosts , canActivate: [AuthGuard]},
-      { path: "myposts" , component: MyPosts , canActivate: [AuthGuard]},
+      { path: "newpost" , component: AddNewPost },
+      { path: "" , component: AllPosts },
+      { path: "allposts" , component: AllPosts },
+      { path: "myposts" , component: MyPosts },
     ]
   },
   {
     path:"",
     component: AuthLayout,
+    canActivate: [NoAuthGuard],
     children:[
-      { path: "login" , component: Login } ,
+      { path: "login" , component: Login } , 
       { path: "signup" , component: SignUp }
     ]
   },
