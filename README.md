@@ -55,6 +55,8 @@ client/src/app      # Angular frontend
 ├── components/
 ├── services/
 ├── interfaces/
+├── environment/
+├── layouts/
 └── guards/
 
 server/             # Express backend
