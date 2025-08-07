@@ -32,9 +32,9 @@ This is a full-stack simple social media application built using the **MEAN stac
   - `NoAuthGuard`: prevents access to auth routes if already logged in
 
 ### Posts
-- Create, update, and delete posts
-- View all posts or only your own
-- Each post includes a title, content, and creation date
+- Create, and delete posts
+- View all posts or only your own posts
+- Each post includes a title, content, optional img url , and creation date 
 
 ### Likes
 - Like and unlike posts
