@@ -34,7 +34,7 @@ This is a full-stack simple social media application built using the **MEAN stac
 ### Posts
 - Create, and delete posts
 - View all posts or only your own posts
-- Each post includes a title, content, optional img url , and creation date 
+- Each post includes a title, content, imgURL ( optional ) , and creation date 
 
 ### Likes
 - Like and unlike posts
