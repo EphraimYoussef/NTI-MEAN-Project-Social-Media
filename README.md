@@ -77,7 +77,7 @@ server/             # Express backend
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/social-media-mean-app
+git clone https://github.com/EphraimYoussef/POSTLY-MEAN-Stack-Project
 cd social-media-mean-app
 ```
 
