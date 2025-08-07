@@ -78,7 +78,7 @@ server/             # Express backend
 
 ```bash
 git clone https://github.com/EphraimYoussef/POSTLY-MEAN-Stack-Project
-cd social-media-mean-app
+cd POSTLY-MEAN-Stack-Project
 ```
 
 ### 2. Install Dependencies
