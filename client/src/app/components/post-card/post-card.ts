@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IComment } from '../../interfaces/commentInterface';
 import { PostServices } from '../../services/post/post-services';
 import { ChangeDetectorRef } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-post-card',
@@ -21,18 +22,21 @@ export class PostCard implements OnInit {
   @Input() post!: IPost;
   @Input() myPost!: boolean;
   comments: IComment[] = [];
+  user: any;
 
   constructor(
     private commentService: CommentServices,
     private toastr: ToastrService,
     private postServices: PostServices,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private cookieService: CookieService
   ) {}
 
-
+  
   ngOnInit() {
     this.getComments();
     this.checked = this.post.isLiked || false;
+    this.user = JSON.parse(this.cookieService.get('user') || '{}');
   }
 
   toggleComments() {

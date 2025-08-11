@@ -30,7 +30,7 @@ const getPostById = async ( userId, postId) => {
 
 const getPostsByUser = async (userId) => {
     try {
-        const posts = await Post.find({ author : userId });
+        const posts = await Post.find({ author : userId }).populate('author', 'username imgUrl').sort({ createdAt: -1 });
         const postsWithLikesStatus = posts.map(post => {
             const isLiked = post.likedBy.includes(userId);
             return { ...post._doc, isLiked };

@@ -14,7 +14,7 @@ export class MyPosts {
   posts: IPost[] = [];
 
   ngOnInit() {
-    this.postServices.getPosts().subscribe({
+    this.postServices.getPostsByUser().subscribe({
       next: (posts) => {
         this.posts = posts;
       },
