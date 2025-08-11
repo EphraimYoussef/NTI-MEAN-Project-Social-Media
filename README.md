@@ -110,5 +110,7 @@ cd client
 ng serve
 ```
 
+---
+
 ## Video
 https://github.com/user-attachments/assets/3d13b7c3-5d14-42ea-9862-4d8e69c1a2d1
